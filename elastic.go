@@ -47,7 +47,7 @@ func Populate(number int) error {
 
 func Search(term string, from, size int) ([]*User, error) {
 	client, err := elastic.NewClient(elastic.SetURL("http://elasticsearch:9200"))
-	if err != err {
+	if err != nil {
 		return nil, err
 	}
 	q := elastic.NewMultiMatchQuery(term, "username", "email", "real_name").Fuzziness("AUTO:2,5")
